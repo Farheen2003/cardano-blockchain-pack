@@ -91,7 +91,8 @@ public class CardanoGenerateAccountTool extends CardanoProcessToolAbstract {
     protected void storeToForm(boolean isTest, final Account account, WorkflowAssignment wfAssignment) {
         String formDefId = getPropertyString("formDefId");
         
-        String accountBaseAddress = account.baseAddress();
+        String accountBaseAddressField = getPropertyString(account.baseAddress());
+                                                           
         String accountMnemonicField = getPropertyString("accountMnemonicField");
         String accountOwnerField = getPropertyString("accountOwnerField");
         String accountOwnerValue = WorkflowUtil.processVariable(getPropertyString("accountOwnerValue"), "", wfAssignment);
@@ -102,7 +103,7 @@ public class CardanoGenerateAccountTool extends CardanoProcessToolAbstract {
 
         //Account base address set as Record ID
         //row.setId(account.baseAddress());
-        row = addRow(row, accountBaseAddress);
+        row = addRow(row, accountBaseAddressField, account.baseAddress());
 
         //Mnemonic phrase MUST be secured at all times.
         row = addRow(row, accountMnemonicField, PluginUtil.encrypt(account.mnemonic()));
