@@ -91,7 +91,7 @@ public class CardanoGenerateAccountTool extends CardanoProcessToolAbstract {
     protected void storeToForm(boolean isTest, final Account account, WorkflowAssignment wfAssignment) {
         String formDefId = getPropertyString("formDefId");
         
-        String accountBaseAddressField = getPropertyString(account.baseAddress());
+        String accountBaseAddressField = getPropertyString("accountBaseAddressField");
                                                            
         String accountMnemonicField = getPropertyString("accountMnemonicField");
         String accountOwnerField = getPropertyString("accountOwnerField");
